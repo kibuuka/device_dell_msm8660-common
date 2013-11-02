@@ -77,7 +77,8 @@ PRODUCT_PACKAGES += \
 
 # Camera wrapper
 PRODUCT_PACKAGES += \
-    camera.default
+    camera.default \
+    camera.msm8660
 
 # HDMI
 PRODUCT_PACKAGES += \
@@ -114,6 +115,19 @@ PRODUCT_COPY_FILES += \
     device/dell/msm8660-common/firmware/leia_pfp_470.fw:system/etc/firmware/leia_pfp_470.fw \
     device/dell/msm8660-common/firmware/leia_pm4_470.fw:system/etc/firmware/leia_pm4_470.fw \
     device/dell/msm8660-common/firmware/vidc_1080p.fw:system/etc/firmware/vidc_1080p.fw
+# MSM8660 adreno
+PRODUCT_COPY_FILES += \
+    device/dell/msm8660-common/lib/libC2D2.so:system/lib/libC2D2.so \
+    device/dell/msm8660-common/lib/libOpenVG.so:system/lib/libOpenVG.so \
+    device/dell/msm8660-common/lib/libc2d2_z180.so:system/lib/libc2d2_z180.so \
+    device/dell/msm8660-common/lib/libgsl.so:system/lib/libgsl.so \
+    device/dell/msm8660-common/lib/libsc-a2xx.so:system/lib/libsc-a2xx.so \
+    device/dell/msm8660-common/lib/egl/eglsubAndroid.so:system/lib/egl/eglsubAndroid.so \
+    device/dell/msm8660-common/lib/egl/libEGL_adreno200.so:system/lib/egl/libEGL_adreno200.so \
+    device/dell/msm8660-common/lib/egl/libGLESv1_CM_adreno200.so:system/lib/egl/libGLESv1_CM_adreno200.so \
+    device/dell/msm8660-common/lib/egl/libGLESv2S3D_adreno200.so:system/lib/egl/libGLESv2S3D_adreno200.so \
+    device/dell/msm8660-common/lib/egl/libGLESv2_adreno200.so:system/lib/egl/libGLESv2_adreno200.so \
+    device/dell/msm8660-common/lib/egl/libq3dtools_adreno200.so:system/lib/egl/libq3dtools_adreno200.so
 
 
 # Device uses high-density artwork where available
