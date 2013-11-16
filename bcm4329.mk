@@ -12,18 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# This file is for bcmdhd wifi since so many 8660 devices use it
 BOARD_HOSTAPD_DRIVER             := WEXT
 BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_wext
 BOARD_WLAN_DEVICE                := bcm4329
 BOARD_WPA_SUPPLICANT_DRIVER      := WEXT
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_wext
-WIFI_BAND                        := 802_11_ABG
+WIFI_BAND                        := 802_11_ABGN
 WIFI_DRIVER_FW_PATH_STA          := "/system/etc/rtecdc_ap.bin"
 WIFI_DRIVER_FW_PATH_AP           := "/system/etc/rtecdc_apsta.bin"
 #WIFI_DRIVER_FW_PATH_PARAM        := "/sys/module/dhd/parameters/firmware_path"
 WIFI_DRIVER_MODULE_NAME          := "dhd"
 WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/dhd.ko"
+WIFI_DRIVER_SOCKET_IFACE         := "eth0"
 WPA_SUPPLICANT_VERSION           := VER_0_8_X
 
 # Broadcom BCM43xx chips are WiFi/BT capable
