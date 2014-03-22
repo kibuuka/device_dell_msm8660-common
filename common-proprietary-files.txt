@@ -1,0 +1,16 @@
+bin/qmuxd
+bin/rmt_storage
+lib/libacdbloader.so
+lib/libaudioalsa.so
+lib/libdiag.so
+lib/libdsi_netctrl.so
+lib/libdsutils.so
+lib/libgsl.so
+lib/libidl.so
+lib/libmlplatform.so
+lib/libmm-color-convertor.so
+lib/libmpl.so
+lib/libnetmgr.so
+lib/libOpenVG.so
+lib/libqmi.so
+lib/libqmiservices.so

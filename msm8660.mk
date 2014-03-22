@@ -25,6 +25,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+    frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
     frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
     frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
     frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
@@ -41,12 +42,13 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio_policy.msm8660 \
     audio.primary.msm8660 \
-    audio_policy.conf \
+    audio.usb.default \
+    libaudio-resampler \
     libaudioutils
 
 # GPS
 PRODUCT_COPY_FILES += \
-    device/common/gps/gps.conf_EU_SUPL:system/etc/gps.conf
+    device/common/gps/gps.conf_US_SUPL:system/etc/gps.conf
 
 # Graphics
 PRODUCT_PACKAGES += \
@@ -75,14 +77,14 @@ PRODUCT_PACKAGES += \
     libOmxEvrcEnc \
     libOmxAmrEnc
 
-# Camera wrapper
+# Camera
 PRODUCT_PACKAGES += \
-    camera.default \
-    camera.msm8660
+    camera.msm8660 \
+    libsurfaceflinger_client
 
-# HDMI
+# Power
 PRODUCT_PACKAGES += \
-    hdmid
+    power.msm8660
 
 # Torch
 PRODUCT_PACKAGES += \
@@ -91,6 +93,10 @@ PRODUCT_PACKAGES += \
 # USB
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
+
+# Misc
+PRODUCT_PACKAGES += \
+    libnetcmdiface
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
@@ -102,32 +108,15 @@ PRODUCT_COPY_FILES += \
     device/dell/msm8660-common/configs/media_codecs.xml:system/etc/media_codecs.xml \
     device/dell/msm8660-common/configs/media_profiles.xml:system/etc/media_profiles.xml
 
+# audio policy
+PRODUCT_COPY_FILES += \
+    device/dell/msm8660-common/configs/audio_policy.conf:system/etc/audio_policy.conf
 
 # MSM8660 firmware
 PRODUCT_COPY_FILES += \
-    device/dell/msm8660-common/firmware/a300_pfp.fw:system/etc/firmware/a300_pfp.fw \
-    device/dell/msm8660-common/firmware/a300_pm4.fw:system/etc/firmware/a300_pm4.fw \
-    device/dell/msm8660-common/firmware/a225_pfp.fw:system/etc/firmware/a225_pfp.fw \
-    device/dell/msm8660-common/firmware/a225_pm4.fw:system/etc/firmware/a225_pm4.fw \
-    device/dell/msm8660-common/firmware/a225p5_pm4.fw:system/etc/firmware/a225p5_pm4.fw \
-    device/dell/msm8660-common/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \
-    device/dell/msm8660-common/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw \
     device/dell/msm8660-common/firmware/leia_pfp_470.fw:system/etc/firmware/leia_pfp_470.fw \
     device/dell/msm8660-common/firmware/leia_pm4_470.fw:system/etc/firmware/leia_pm4_470.fw \
     device/dell/msm8660-common/firmware/vidc_1080p.fw:system/etc/firmware/vidc_1080p.fw
-# MSM8660 adreno
-PRODUCT_COPY_FILES += \
-    device/dell/msm8660-common/lib/libC2D2.so:system/lib/libC2D2.so \
-    device/dell/msm8660-common/lib/libOpenVG.so:system/lib/libOpenVG.so \
-    device/dell/msm8660-common/lib/libc2d2_z180.so:system/lib/libc2d2_z180.so \
-    device/dell/msm8660-common/lib/libgsl.so:system/lib/libgsl.so \
-    device/dell/msm8660-common/lib/libsc-a2xx.so:system/lib/libsc-a2xx.so \
-    device/dell/msm8660-common/lib/egl/eglsubAndroid.so:system/lib/egl/eglsubAndroid.so \
-    device/dell/msm8660-common/lib/egl/libEGL_adreno200.so:system/lib/egl/libEGL_adreno200.so \
-    device/dell/msm8660-common/lib/egl/libGLESv1_CM_adreno200.so:system/lib/egl/libGLESv1_CM_adreno200.so \
-    device/dell/msm8660-common/lib/egl/libGLESv2S3D_adreno200.so:system/lib/egl/libGLESv2S3D_adreno200.so \
-    device/dell/msm8660-common/lib/egl/libGLESv2_adreno200.so:system/lib/egl/libGLESv2_adreno200.so \
-    device/dell/msm8660-common/lib/egl/libq3dtools_adreno200.so:system/lib/egl/libq3dtools_adreno200.so
 
 
 # Device uses high-density artwork where available
@@ -143,5 +132,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.mdpcomp.logs=0 \
     debug.sf.hw=1 \
     dev.pm.dyn_samplingrate=1 \
-    ro.opengles.version=131072
+    ro.opengles.version=131072 \
+    ro.bq.gpu_to_cpu_unsupported=1
 
+# call the proprietary setup
+$(call inherit-product-if-exists, vendor/dell/msm8660-common/msm8660-common-vendor.mk)

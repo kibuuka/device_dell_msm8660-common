@@ -1,0 +1,10 @@
+# Device-specific proprietary files sharing a common name
+bin/netmgrd
+lib/libacdbmapper.so
+lib/libaudcal.so
+lib/libgemini.so
+lib/libmllite.so
+lib/libmmipl.so
+lib/libmmjpeg.so
+lib/liboemcamera.so
+lib/libqdp.so
