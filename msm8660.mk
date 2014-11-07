@@ -47,8 +47,8 @@ PRODUCT_PACKAGES += \
     libaudioutils
 
 # GPS
-PRODUCT_COPY_FILES += \
-    device/common/gps/gps.conf_US_SUPL:system/etc/gps.conf
+#PRODUCT_COPY_FILES += \
+#    device/common/gps/gps.conf_US_SUPL:system/etc/gps.conf
 
 # Graphics
 PRODUCT_PACKAGES += \
@@ -104,9 +104,9 @@ PRODUCT_PACKAGES += \
     setup_fs
 
 # Media configuration
-PRODUCT_COPY_FILES += \
-    device/dell/msm8660-common/configs/media_codecs.xml:system/etc/media_codecs.xml \
-    device/dell/msm8660-common/configs/media_profiles.xml:system/etc/media_profiles.xml
+#PRODUCT_COPY_FILES += \
+#    device/dell/msm8660-common/configs/media_codecs.xml:system/etc/media_codecs.xml \
+#    device/dell/msm8660-common/configs/media_profiles.xml:system/etc/media_profiles.xml
 
 # audio policy
 PRODUCT_COPY_FILES += \
